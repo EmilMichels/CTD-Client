@@ -38,6 +38,7 @@ class DshipFrame(ViewMixin, CtkFrame):
             key: tk.StringVar(value=value)
             for key, value in dship_values.items()
         }
+        self.dship_values = {}
         self.dship_label = ctk.CTkLabel(self, text="waiting for connection...")
         self.dship_label.grid(row=0, column=1)
         self.debug = self.configuration.debugging
@@ -80,9 +81,10 @@ class DshipFrame(ViewMixin, CtkFrame):
                     self.set_dship_status_bad()
                 else:
                     self.set_dship_status_good()
-                    for (_, var), value in zip(
+                    for (key, var), value in zip(
                         self.dship_vars.items(), data.values()
                     ):
+                        self.dship_values[key] = value
                         var.set(value)
         except Exception as error:
             self.set_dship_status_bad(str(error))
