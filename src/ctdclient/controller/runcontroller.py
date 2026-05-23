@@ -33,6 +33,7 @@ class RunController(Controller):
         self.platform = self.variables.platform
         self.operator = self.variables.operator
         self.station = self.variables.station
+        self.dship_values = self.variables.dship_frame.dship_values
         self.bottle_values = self.variables.bottle_frame.bottle_values
         # set callback methods
         self.view.add_callback("runseasave", self.run_seasave)
@@ -64,6 +65,7 @@ class RunController(Controller):
             self.cast_number.get(),
             self.operator.get(),
             self.station.get(),
+            self.dship_values["Water_Depth"],
             downcast,
             autostart,
         )

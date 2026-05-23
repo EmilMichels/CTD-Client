@@ -44,6 +44,7 @@ class RunSeasave:
         cast: str,
         operator: str,
         station: str,
+        depth: str,
         downcast: bool = True,
         autostart: bool = True,
     ) -> subprocess.Popen | None:
@@ -60,6 +61,7 @@ class RunSeasave:
             cast,
             operator,
             station,
+            depth,
             autostart,
         ):
             return self.run(downcast, autostart)
@@ -106,6 +108,7 @@ class RunSeasave:
         cast: str,
         operator: str,
         station: str,
+        depth: str,
         autostart: bool = False,
     ) -> bool:
         """
@@ -147,6 +150,7 @@ class RunSeasave:
             bottle_info=bottles.data,
             number_of_bottles=bottles.number_of_bottles,
         )
+        psa.adjust_plotting_axis_borders(depth)
         # write metadataheader
         MetadataHeader.build_metadata_header(
             psa=psa,
