@@ -1,7 +1,7 @@
 [project]
 name = "CTD-Client"
 authors = [{ name = "Emil Michels", email = "emil.michels@iow.de" }]
-version = "1.16.0"
+version = "1.17.0"
 description = "A program designed to facilitate the measurement and processing of Sea-Bird SBE9/11 CTD data. The program enhances datasets with ship metadata and ensures standardized, consistent data collection."
 readme = "README.md"
 requires-python = ">=3.12"
@@ -31,6 +31,7 @@ Issues = "https://github.com/DAM-CTD-Software/CTD-Client/issues"
 Changelog = "https://github.com/DAM-CTD-Software/CTD-Client/blob/main/CHANGELOG.md"
 
 
+
 [tool.pytest.ini_options]
 pythonpath = [".", "src", "src/ctdclient"]
 
@@ -58,6 +59,7 @@ exclude_commit_patterns = ["chore", "docs", "style", "ci", "test"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ctdclient"]
+
 
 [build-system]
 requires = ["hatchling"]

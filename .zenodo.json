@@ -1,6 +1,6 @@
 {
     "title": "CTD-Client: A program designed to facilitate the measurement and processing of Sea-Bird SBE9/11 CTD data",
-    "version": "1.16.0",
+    "version": "1.17.0",
     "creators": [
         {
             "name": "Michels, Emil",

@@ -2,6 +2,20 @@
 
 <!-- version list -->
 
+## v1.17.0 (2026-05-23)
+
+### Features
+
+- Make dship values accessible from multiprocessing queue
+  ([`5e4769c`](https://github.com/DAM-CTD-Software/CTD-Client/commit/5e4769cfd4a3a8dfec4acfa10bfb00b5467d5222))
+
+- Use dship depth value to call plot axis update
+  ([`4b5e5e4`](https://github.com/DAM-CTD-Software/CTD-Client/commit/4b5e5e4652766788b021399e4f6ae35f86b01cc1))
+
+- **model**: Adjusting seasave plot axis according to ships echo sounder values
+  ([`5f96a47`](https://github.com/DAM-CTD-Software/CTD-Client/commit/5f96a47d63a028e90e145688da3f49f057d67ed8))
+
+
 ## v1.16.0 (2026-05-12)
 
 ### Bug Fixes
