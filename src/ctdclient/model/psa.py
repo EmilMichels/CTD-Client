@@ -1,4 +1,5 @@
 import logging
+import math
 from pathlib import Path
 
 from ctdam.parser import PsaFile
@@ -168,3 +169,18 @@ class SeasavePsa(PsaFile):
             File path to .hex
         """
         self.settings_part["DataFilePath"]["@value"] = str(hex_path)
+
+    def adjust_plotting_axis_borders(self, depth_str: str):
+        depth = float(depth_str[:-1].strip())
+        target_depth = math.ceil(depth / 10) * 10
+        logger.debug(f"Depth to set plot axis to: {target_depth}")
+        clients = self.data["SeasaveProgramSetup"]["Clients"][
+            "DisplaySettings"
+        ]["Display"]
+        for display in clients:
+            if display["@Type"] == "4":
+                if display["XYPlotData"]["PlotType"]["@value"] == "0":
+                    y_axis = display["XYPlotData"]["Axes"]["Axis"][0]
+                    if y_axis["Calc"]["@UnitID"] == "3":
+                        y_axis["MaximumValue"]["@value"] = target_depth
+                        y_axis["MajorDivisions"]["@value"] = target_depth // 10
