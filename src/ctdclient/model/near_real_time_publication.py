@@ -345,7 +345,7 @@ class NearRealTimeTarget:
             draft_dir.mkdir(parents=True, exist_ok=True)
         msg.add_header("X-Unsent", "1")
         file_path = (
-            draft_dir.joinpath(f"{str(datetime.now()).replace(' ', 'T')}.eml")
+            draft_dir.joinpath(rf"{str(datetime.now()).replace(' ', 'T')}.eml")
             if file_path == ""
             else Path(file_path)
         )
@@ -530,11 +530,11 @@ class NearRealTimeTarget:
         """
         available_filters = {
             "germany": [
-                (53.9, 10.0),
-                (53.9, 14.75),
-                (55.5, 14.75),
-                (55.5, 10.0),
-                (53.9, 10.0),
+                (54.0, 10.3),
+                (54.0, 14.4),
+                (55.1, 14.4),
+                (55.1, 10.3),
+                (54.0, 10.3),
             ]
         }
         try:
