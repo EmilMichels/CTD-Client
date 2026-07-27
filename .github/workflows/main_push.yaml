@@ -14,6 +14,8 @@ jobs:
       issues: write
       pull-requests: write
       id-token: write
+    outputs:
+      exists: ${{ steps.check_dist.outputs.exists }}
 
     steps:
       - uses: actions/create-github-app-token@v1
@@ -77,8 +79,8 @@ jobs:
 
   build_binary:
     needs: release
-    if: needs.release.check_dist.outputs.exists == 'true'
-    runs-on: batonogov/pyinstaller-windows:v4.11.1
+    if: needs.release.outputs.exists == 'true'
+    runs-on: windows-latest
     steps:
       - name: Install missing dependencies
         run: apt update && apt install -y nodejs curl git jq
@@ -100,7 +102,7 @@ jobs:
           git checkout pages :
           mkdir /htmls
           cp -rt /htmls *.html *.inv *.js _static _sources _images
-          ./generate_rc_file.sh
+          python -m generate_rc_file
           pyinstaller -y windows.spec
 
       - name: Upload binaries to release
