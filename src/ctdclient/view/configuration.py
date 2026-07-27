@@ -150,7 +150,6 @@ class BaseSettings(ViewMixin, CtkFrame):
             for key, value in self.values_to_set[instrument].items()
         }
         self.configuration.write(use_internal_values=False)
-        print("saved")
         self.callbacks["save"]()
 
     def select_file(self, instrument, name, variable):
